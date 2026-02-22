@@ -1,6 +1,7 @@
 package by.it.group551003.molchan.lesson02;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 /*
 Даны события events
@@ -25,12 +26,21 @@ public class A_VideoRegistrator {
         //timeWorkDuration время работы видеокамеры после старта
         List<Double> result;
         result = new ArrayList<>();
-        int i = 0;                              //i - это индекс события events[i]
+        int i = 0;  //i - это индекс события events[i]
+        double endTime = 0;
         //Комментарии от проверочного решения сохранены для подсказки, но вы можете их удалить.
         //Подготовка к жадному поглощению массива событий
+        Arrays.sort(events);
         //hint: сортировка Arrays.sort обеспечит скорость алгоритма
         //C*(n log n) + C1*n = O(n log n)
 
+        while (i < events.length) {
+            if (endTime < events[i]) {
+                result.add(events[i]);
+                endTime = events[i] + workDuration;
+            }
+            i++;
+        }
         //пока есть незарегистрированные события
         //получим одно событие по левому краю
         //и запомним время старта видеокамеры
