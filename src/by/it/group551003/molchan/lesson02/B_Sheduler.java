@@ -42,7 +42,7 @@ public class B_Sheduler {
         for (int i = 0; i < events.length; i++) {
             Event e = events[i];
 
-            if (e.start >= currentEnd) {
+            if ((e.start >= currentEnd) && (e.start >= from) && (e.stop <= to)) {
                 result.add(e);
                 currentEnd = e.stop;
             }
